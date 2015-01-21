@@ -2,6 +2,8 @@ package com.hyunje.jo;
 
 import com.twitter.penguin.korean.TwitterKoreanProcessorJava;
 import com.twitter.penguin.korean.tokenizer.KoreanTokenizer;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ public final class NounExtractor {
         processor = new TwitterKoreanProcessorJava.Builder().build();
     }
 
-    public List<String> extract(String sentence) {
+    public List<String> extractFromSentence(String sentence) {
         List<KoreanTokenizer.KoreanToken> parsed = processor
                 .tokenize(sentence);
         List<String> nouns = new ArrayList<String>();
@@ -29,5 +31,16 @@ public final class NounExtractor {
             }
         }
         return nouns;
+    }
+
+    public List<String> extractFromJSON(String jsonString){
+        JSONObject jsonObject = new JSONObject(jsonString);
+        JSONArray nouns = jsonObject.getJSONArray("noun");
+
+        List<String> nounArray = new ArrayList<String>();
+        for (int i = 0; i < nouns.length(); i++) {
+            nounArray.add(nouns.getString(i));
+        }
+        return nounArray;
     }
 }

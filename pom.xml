@@ -36,6 +36,7 @@
         <twitter4j.version>4.0.2</twitter4j.version>
         <korean-text.version>2.4.2</korean-text.version>
         <fluent-logger.version>0.3.1</fluent-logger.version>
+        <json.version>20140107</json.version>
     </properties>
 
     <dependencies>
@@ -58,6 +59,11 @@
             <groupId>org.fluentd</groupId>
             <artifactId>fluent-logger</artifactId>
             <version>${fluent-logger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
         </dependency>
     </dependencies>
 

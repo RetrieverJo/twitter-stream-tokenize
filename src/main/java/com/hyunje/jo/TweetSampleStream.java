@@ -65,7 +65,7 @@ public class TweetSampleStream {
             @Override
             public void onStatus(Status status) {
                 System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());
-                List<String> extracted = extractor.extract(status.getText());
+                List<String> extracted = extractor.extractFromSentence(status.getText());
                 if(extracted.size() != 0) {
                     System.out.println("Nouns : " + extracted);
                     Logger.log("text", "noun", extracted);
